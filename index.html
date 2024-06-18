@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="note.css">
+    <link rel="shortcut icon" href="note.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
+    <title>Tailor Notes</title>
+</head>
+
+<body>
+    <main>
+        <div class="title">
+            <h1>Tailor</h1>
+            <h1> <span style="color: #64b897;">Notes</span> </h1>
+        </div>
+
+        <div class="border"></div>
+
+        <div class="formTambah">
+            <div class="kotak">
+                <div class="keterangan">
+                    <label for="">Nama</label>
+                    <input type="text" id="nama" placeholder="nama">
+                </div>
+                <div class="keterangan">
+                    <label for="">DP</label>
+                    <input type="number" id="dp" placeholder="dp">
+                </div>
+            </div>
+
+            <div class="kotak">
+                <div class="keterangan">
+                    <label for="">No Hp</label>
+                    <input type="number" id="noHp" placeholder="noHp">
+                </div>
+                <div class="keterangan">
+                    <label for="">Tanggal Pesan</label>
+                    <input type="date" id="tglpesan" placeholder="Tanggal Pesan">
+                </div>
+            </div>
+
+            <div class="kotak">
+                <div class="keterangan">
+                    <label for="">Deskripsi</label>
+                    <textarea placeholder="deskripsi pesanan" name="" id="deskripsi"></textarea>
+                </div>
+
+                <div class="keterangan">
+                    <label for="">Tanggal Ambil</label>
+                    <input type="date" id="tglambil" placeholder="Tanggal Ambil">
+                </div>
+            </div>
+
+            <div class="tombol">
+                <button id="btn-simpan">Simpan</button>
+                <button id="btn-cancel">Cancel</button>
+
+
+            </div>
+        </div>
+
+        <div class="borderbawah"></div>
+
+        <div class="">
+            <div class="search">
+                <div>
+                    <input id="searchInput" type="text" placeholder="Search">
+                </div>
+                <div class="logo">
+                    <i class="fa-solid fa-magnifying-glass fa-xl"></i>
+                </div>
+            </div>
+
+            <div class="filters">
+
+                <button id="all" class="hijau">
+                    <span>All</span>
+                </button>
+                <button id="sortByName" class="kuning">
+                    <i class="fa-solid fa-arrow-up-a-z fa-lg"></i>
+                    <span>Sort</span>
+                </button>
+                <button id="selesai" class="hijau">
+                    <span>selesai</span>
+                </button>
+                <button id="blmselesai" class="kuning" style="width: 150px;">
+                    <span>belum selesai</span>
+                </button>
+
+                <button id="sortByTglambil" class="hijau" style="width: 150px;">
+                    <i class="fa-solid fa-calendar-days fa-lg"></i>
+                    <span>Tanggal Ambil</span>
+                </button>
+
+                <button id="sortByTglpesan" class="kuning" style="width: 150px;">
+                    <i class="fa-solid fa-calendar-days fa-lg"></i>
+                    <span>Tanggal Pesan</span>
+                </button>
+               
+            </div>
+        </div>
+
+        
+        <div id="list" class="isian">
+
+        </div>
+
+
+        <!-- <div class="tableList">
+            <h2>Daftar Notes</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>No Hp</th>
+                        <th>Deskripsi</th>
+                        <th>Dp</th>
+                        <th>Tgl Pesan</th>
+                        <th>Tgl Ambil</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td>Nissa</td>
+                    <td>0878a1118</td>
+                    <td>ssaaaaaaaaaass</td>
+                    <td>10000</td>
+                    <td>qs</td>
+                    <td>11</td>
+                    <td>22</td>
+                    <td>
+                        <div class="aksi">
+                            <div> <i class="fa-solid fa-trash-can fa-xl"></i> </div>
+                            <div> <i class="fa-solid fa-trash-can fa-xl"></i> </div>
+                        </div>
+                        
+
+                    </td>
+                </tbody>
+            </table>
+        </div> -->
+
+
+
+        <div id="popup" class="popup">
+            <div class="title">
+                <h1>Update</h1>
+                <h1> <span style="color: #64b897;">Notes</span> </h1>
+                <div id="close" class="close">
+                    <i class="fa-solid fa-xmark fa-2xl"></i>
+                </div>
+
+            </div>
+
+            <div class="border"></div>
+
+            <div class="formTambah">
+
+                <div class="kotak">
+                    <div class="keterangan">
+                        <label for="">Nama</label>
+                        <input type="text" id="popup-nama" placeholder="nama">
+                    </div>
+                    <div class="keterangan">
+                        <label for="">DP</label>
+                        <input type="number" id="popup-dp" placeholder="dp">
+                    </div>
+                </div>
+
+                <div class="kotak">
+                    <div class="keterangan">
+                        <label for="">No Hp</label>
+                        <input type="number" id="popup-noHp" placeholder="noHp">
+                    </div>
+                    <div class="keterangan">
+                        <label for="">Tanggal Pesan</label>
+                        <input type="date" id="popup-tglpesan" placeholder="Tanggal Pesan">
+                    </div>
+                </div>
+
+                <div class="kotak">
+                    <div class="keterangan">
+                        <label for="">Deskripsi</label>
+                        <textarea placeholder="deskripsi pesanan" name="" id="popup-deskripsi"></textarea>
+                    </div>
+
+                    <div class="keterangan">
+                        <label for="">Tanggal Ambil</label>
+                        <input type="date" id="popup-tglambil" placeholder="Tanggal Ambil">
+                    </div>
+                </div>
+
+                <div class="tombol">
+                    <button id="popup-simpan">Simpan</button>
+                    <button id="popup-cancel">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+</body>
+<Script src="note.js"></Script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</html>

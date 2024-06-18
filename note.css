@@ -1,0 +1,309 @@
+body {
+  font-size: 17px;
+  /* Mengatur ukuran font default untuk seluruh halaman */
+  font-family: Arial, sans-serif;
+  /* Menetapkan font family */
+}
+
+main {
+  border: 2px solid black;
+  background-color: white;
+  border-radius: 30px;
+  width: 80%;
+  height: auto;
+  padding-bottom: 25px;
+  margin: 25px auto;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+/* .titlePopup{
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+} */
+
+.title i {
+  position: absolute;
+  left: 900px;
+  top: 10px;
+  /* padding-left: 200px; */
+  /* justify-content: start; */
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+.border {
+  border: 1px solid black;
+}
+
+.kotak {
+  display: flex;
+  justify-content: center;
+  gap: 5%;
+}
+
+.keterangan {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  width: 350px;
+  height: 50px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #e8e8e8;
+}
+
+textarea {
+  width: 350px;
+  height: 35px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 15px;
+  background-color: #e8e8e8;
+}
+
+.tombol {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 35px 0;
+}
+
+.tombol button {
+  width: 200px;
+  height: 45px;
+  background-color: #64b897;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.tombol button:hover {
+  background-color: #509378;
+}
+
+.borderbawah {
+  border: 1px dashed black;
+  margin-bottom: 25px;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+}
+
+.search input {
+  background-color: white;
+  width: 400px;
+}
+
+.logo {
+  height: 52px;
+  width: 50px;
+  margin-left: -30px;
+  border-radius: 10px;
+  align-items: center;
+  background-color: #f3db71;
+  border: 1px solid black;
+}
+
+.logo i {
+  padding-top: 23px;
+  padding-left: 13px;
+}
+
+.logo i:hover,
+.logo i:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 25px auto 0 auto;
+}
+
+.hijau {
+  width: 100px;
+  height: 40px;
+  border-radius: 15px;
+  text-align: center;
+  border: 1px solid black;
+  background-color: #64b897;
+}
+
+.hijau:hover {
+  background-color: #509378;
+}
+
+.kuning {
+  width: 100px;
+  height: 40px;
+  border-radius: 15px;
+  text-align: center;
+  border: 1px solid black;
+  background-color: #F3DB71;
+}
+
+.kuning:hover {
+  background-color: #c2af5a;
+}
+
+.isian {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 25px 0;
+}
+
+.items {
+  justify-content: center;
+  margin-top: 25px;
+  display: flex;
+}
+
+.item {
+  background-color: #F3DB71;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 10px auto;
+  width: 350px;
+  height: auto;
+}
+
+.yellow {
+  background-color: #F3DB71;
+  /* Warna latar kuning */
+  border: 1px solid black;
+  /* Warna border kuning */
+  /* Gaya tambahan sesuai kebutuhan */
+}
+
+.green {
+  background-color: #64B897;
+  /* Warna latar hijau */
+  border: 1px solid black;
+  /* Warna border hijau */
+  /* Gaya tambahan sesuai kebutuhan */
+}
+
+.green i:hover{
+  color: #2e5244;
+}
+
+.yellow i:hover{
+  color: #4f4827;
+}
+
+.atas {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.bawah {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.popup {
+  border: 2px solid black;
+  background-color: white;
+  border-radius: 30px;
+  width: 75%;
+  height: auto;
+  display: none;
+  position: fixed;
+  top: 15px;
+  left: auto;
+  z-index: 1000;
+  margin: 0 20px;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 15px 20px 15px;
+}
+
+/* .overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 999; 
+} */
+
+
+/* Media Query untuk Responsif di Mobile */
+@media (max-width: 768px) {
+  main {
+    width: 90%; /* Lebar sedikit diperkecil untuk perangkat mobile */
+  }
+
+  .title i {
+    margin-left: 0; /* Menghapus margin kiri di ikon */
+    margin-top: 10px; /* Mengurangi margin atas pada ikon */
+  }
+
+  input, textarea{
+    width: 80%;
+  }
+
+  .search input{
+    width: 80%;
+  }
+
+  .kotak {
+    flex-direction: column; /* Mengubah orientasi kotak menjadi vertical */
+  }
+
+  .keterangan {
+    margin: 10px; /* Mengurangi margin pada keterangan */
+  }
+
+  .filters, .tombol{
+    flex-wrap: wrap;
+  }
+  
+
+  .items {
+    flex-direction: column; /* Menata item menjadi vertical di perangkat mobile */
+  }
+
+  .item {
+    width: 90%; /* Lebar item diatur agar sesuai dengan tampilan mobile */
+    max-width: none; /* Maksimum lebar dihapus untuk tampilan mobile */
+  }
+
+  .popup {
+    width: 90%; /* Lebar popup diatur untuk tampilan mobile */
+    margin: 0 auto; /* Memusatkan popup di tengah pada tampilan mobile */
+  }
+}
