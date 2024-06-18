@@ -150,7 +150,7 @@ elCancel.addEventListener('click', (event) => {
 
 
 /**
- * Menginisialisasi tampilan daftar
+ *  Inisialisasi tampilan daftar catatan saat halaman dimuat.
  * @returns {void}
  */
 const initialize = () => {
@@ -333,7 +333,10 @@ sortByTglambilBtn.addEventListener('click', () => {
     initialize();
 });
 
-// search
+
+/**
+ * Mencari dan menampilkan item berdasarkan kata kunci yang dimasukkan pengguna
+ */
 search.addEventListener("input", () => {
     const keyword = search.value.toLowerCase(); // mendapat nilai input
 
@@ -348,7 +351,9 @@ search.addEventListener("input", () => {
     displayList(filteredItems);
 });
 
-// close popup
+/**
+ * Menutup Popup ketika button close diklik
+ */
 popupClose.addEventListener('click', () => {
     popup.style.display = 'none';
 });
@@ -356,6 +361,7 @@ popupClose.addEventListener('click', () => {
 // simpan data dari popup
 /**
  * Menyimpan perubahan pada catatan yang diupdate melalui popup
+ * @param {Event} event 
  * @returns {void}
  */
 popupSimpan.addEventListener('click', (event) => {
@@ -396,6 +402,11 @@ popupSimpan.addEventListener('click', (event) => {
     });
 });
 
+
+/**
+ * 
+ * Mengkososngkan nilai Popup ketika pengguna membatalkan
+ */
 popupCancel.addEventListener('click', (event) => {
     event.preventDefault();
     popupNama.value = '';
@@ -411,7 +422,9 @@ popupCancel.addEventListener('click', (event) => {
     popup.style.display = 'none';
 });
 
-//localStorage
+/**
+ * Menyimpan listArray ke dalam localStorage setiap kali ada perubahan.
+ */
 const saveToLocalStorage = () => {
     localStorage.setItem('listArray', JSON.stringify(listArray));
 };
