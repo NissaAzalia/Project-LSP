@@ -75,7 +75,15 @@ elSimpan.addEventListener('click', (event) => {
     /**
      * @type {catatan}
      */
+
+    let num = 0;
+    if(listArray.length == 0){
+        num++;
+    }else if(listArray.length > 0){
+        num = listArray[listArray.length - 1].id + 1;
+    }
     const simpan = {
+        id:num,
         nama: inputNama.value,
         noHp: inputNohp.value,
         deskripsi: inputDeskripsi.value,
@@ -86,7 +94,7 @@ elSimpan.addEventListener('click', (event) => {
     };
 
     // Validasi input kosong
-    if (!simpan.nama || !simpan.noHp || !simpan.deskripsi || !simpan.dp || !simpan.tglpesan || !simpan.tglambil) {
+    if (!simpan.nama || !simpan.noHp || !simpan.deskripsi || !simpan.tglpesan || !simpan.tglambil) {
         Swal.fire({
             position: "center",
             icon: "warning",
@@ -121,6 +129,8 @@ elSimpan.addEventListener('click', (event) => {
         showConfirmButton: false,
         timer: 1500 // Durasi alert ditampilkan (dalam milidetik)
     });
+
+    console.log(listArray)
 });
 
 
@@ -189,13 +199,13 @@ const displayList = (array) => {
                 </div>
                 <div class="border"></div>
                 <div class="bawah">
-                    <div class="icon id="btn-update" onClick="updateHandler(${idx})">
+                    <div class="icon id="btn-update" onClick="updateHandler(${item.id})">
                         <i class="fa-solid fa-pen-to-square fa-2xl"></i>
                     </div>
-                    <div class="icon id="btn-delete" onClick="deleteHandler(${idx})">
+                    <div class="icon id="btn-delete" onClick="deleteHandler(${item.id})">
                         <i class="fa-solid fa-trash-can fa-2xl"></i>
                     </div>
-                    <div class="check id="btn-status" onClick="statusHandler(${idx})">
+                    <div class="check id="btn-status" onClick="statusHandler(${item.id})">
                         <i class="fa-solid fa-square-check fa-2xl"></i>
                     </div>
                 </div>
@@ -210,7 +220,9 @@ const displayList = (array) => {
  * @param {number} idx - Indexs catatan yang akan dihapus
  * @returns {void}
  */
-const deleteHandler = (idx) => {
+const deleteHandler = (id) => {
+
+    const data = listArray.filter(val => val.id !== id)
     Swal.fire({
         title: 'Anda yakin?',
         text: "Anda akan menghapus item ini!",
@@ -222,7 +234,7 @@ const deleteHandler = (idx) => {
         cancelButtonText: 'Batal'
     }).then((result) => {
         if (result.isConfirmed) {
-            listArray.splice(idx, 1);
+            listArray= data;
             saveToLocalStorage();
             initialize();
             Swal.fire(
@@ -240,9 +252,9 @@ const deleteHandler = (idx) => {
  * @param {number} idx - Indeks catatan yang akan diperbarui
  * @returns {void}
  */
-const updateHandler = (idx) => {
-    const idData = listArray[idx];
-    updateIndex = idx;
+const updateHandler = (id) => {
+    const idData = listArray.find(val=> val.id == id);
+    updateIndex = id;
 
     // Mengisi nilai input popup dengan data yang akan diupdate
     popupNama.value = idData.nama;
@@ -261,10 +273,12 @@ const updateHandler = (idx) => {
  * @param {number} idx  - Indeks catatan yang akan diubah statusnya
  * @returns {void}
  */
-const statusHandler = (idx) => {
-    if (listArray[idx].status === 'belum selesai') {
-        listArray[idx].status = 'selesai';
-    } else if  (listArray[idx].status === 'selesai') {
+const statusHandler = (id) => {
+
+    const data = listArray.find(val => val.id == id)
+    if (data.status === 'belum selesai') {
+        data.status = 'selesai';
+    } else if  (data.status === 'selesai') {
         return
     }
 
@@ -366,21 +380,22 @@ popupClose.addEventListener('click', () => {
  */
 popupSimpan.addEventListener('click', (event) => {
     event.preventDefault();
+
+    
     const simpan = {
+        id: updateIndex,
         nama: popupNama.value,
         noHp: popupNohp.value,
         deskripsi: popupDeskripsi.value,
         dp: popupDp.value,
         tglpesan: popupTglpesan.value,
         tglambil: popupTglambil.value,
-        status: listArray[updateIndex]?.status || 'belum selesai'
+        status: listArray.find(val => val.id === updateIndex)?.status || 'belum selesai'
     };
 
     if (updateIndex != null) {
-        listArray[updateIndex] = simpan;
+        listArray = listArray.map(item => item.id === updateIndex ? simpan : item);
         updateIndex = null;
-    } else {
-        listArray.push(simpan);
     }
     initialize();
     saveToLocalStorage();

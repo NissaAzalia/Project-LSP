@@ -282,6 +282,11 @@ textarea {
   .filters, .tombol{
     flex-wrap: wrap;
   }
+
+  .title i{
+    left: 450px;
+    top: 20px;
+  }
   
 
   .items {
