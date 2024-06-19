@@ -1,5 +1,6 @@
 /**
  * @typedef {object} catatan
+ * @property {number} id - ID catatan
  * @property {string} nama - Nama pemesan
  * @property {number} noHp - Nomor HP pemesan
  * @property {string} deskripsi - Deskripsi pesanan
@@ -72,9 +73,6 @@ let listArray = JSON.parse(localStorage.getItem("listArray")) || [];
  */
 elSimpan.addEventListener('click', (event) => {
     event.preventDefault();
-    /**
-     * @type {catatan}
-     */
 
     let num = 0;
     if(listArray.length == 0){
@@ -82,6 +80,10 @@ elSimpan.addEventListener('click', (event) => {
     }else if(listArray.length > 0){
         num = listArray[listArray.length - 1].id + 1;
     }
+
+    /**
+     * @type {catatan}
+     */
     const simpan = {
         id:num,
         nama: inputNama.value,
@@ -217,7 +219,7 @@ const displayList = (array) => {
 
 /**
  * Menghapus catatan berdasarkan indeks
- * @param {number} idx - Indexs catatan yang akan dihapus
+ * @param {number} id - ID catatan yang akan dihapus
  * @returns {void}
  */
 const deleteHandler = (id) => {
@@ -249,7 +251,7 @@ const deleteHandler = (id) => {
 
 /**
  * Memperbarui catatan berdasarkan indeks
- * @param {number} idx - Indeks catatan yang akan diperbarui
+ * @param {number} id - ID catatan yang akan diperbarui
  * @returns {void}
  */
 const updateHandler = (id) => {
@@ -270,7 +272,7 @@ const updateHandler = (id) => {
 
 /**
  * Mengganti status catatan menjadi 'selesai'
- * @param {number} idx  - Indeks catatan yang akan diubah statusnya
+ * @param {number} id  - ID catatan yang akan diubah statusnya
  * @returns {void}
  */
 const statusHandler = (id) => {

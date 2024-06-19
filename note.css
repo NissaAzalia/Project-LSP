@@ -237,7 +237,7 @@ textarea {
   height: auto;
   display: none;
   position: fixed;
-  top: 15px;
+  top: 5px;
   left: auto;
   z-index: 1000;
   margin: 0 20px;
