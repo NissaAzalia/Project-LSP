@@ -75,9 +75,9 @@ elSimpan.addEventListener('click', (event) => {
     event.preventDefault();
 
     let num = 0;
-    if(listArray.length == 0){
+    if (listArray.length == 0) {
         num++;
-    }else if(listArray.length > 0){
+    } else if (listArray.length > 0) {
         num = listArray[listArray.length - 1].id + 1;
     }
 
@@ -85,7 +85,7 @@ elSimpan.addEventListener('click', (event) => {
      * @type {catatan}
      */
     const simpan = {
-        id:num,
+        id: num,
         nama: inputNama.value,
         noHp: inputNohp.value,
         deskripsi: inputDeskripsi.value,
@@ -149,8 +149,8 @@ elCancel.addEventListener('click', (event) => {
     inputTglpesan.value = '';
     inputTglambil.value = '';
 
-     // Menampilkan alert berhasil disimpan menggunakan SweetAlert
-     Swal.fire({
+    // Menampilkan alert berhasil disimpan menggunakan SweetAlert
+    Swal.fire({
         icon: 'success',
         title: 'Form mu sudah bersih!',
         showConfirmButton: false,
@@ -236,7 +236,7 @@ const deleteHandler = (id) => {
         cancelButtonText: 'Batal'
     }).then((result) => {
         if (result.isConfirmed) {
-            listArray= data;
+            listArray = data;
             saveToLocalStorage();
             initialize();
             Swal.fire(
@@ -255,8 +255,18 @@ const deleteHandler = (id) => {
  * @returns {void}
  */
 const updateHandler = (id) => {
-    const idData = listArray.find(val=> val.id == id);
+    const idData = listArray.find(val => val.id == id);
     updateIndex = id;
+
+    if(idData.status === 'selesai'){
+        Swal.fire({
+            icon: 'error',
+            title: 'Tidak bisa mengupdate!',
+            text: 'Status pesanan sudah selesai dan tidak bisa diubah.',
+            showConfirmButton: true,
+        });
+        return;
+    }
 
     // Mengisi nilai input popup dengan data yang akan diupdate
     popupNama.value = idData.nama;
@@ -266,7 +276,7 @@ const updateHandler = (id) => {
     popupTglpesan.value = idData.tglpesan;
     popupTglambil.value = idData.tglambil;
 
-    
+
     popup.style.display = 'block'; // Menampilkan popup
 };
 
@@ -280,7 +290,7 @@ const statusHandler = (id) => {
     const data = listArray.find(val => val.id == id)
     if (data.status === 'belum selesai') {
         data.status = 'selesai';
-    } else if  (data.status === 'selesai') {
+    } else if (data.status === 'selesai') {
         return
     }
 
@@ -311,7 +321,7 @@ const filterByStatus = (status) => {
     displayList(filteredArray);
 };
 
-filterAll.addEventListener(`click`, ()=>{
+filterAll.addEventListener(`click`, () => {
     displayList(listArray);
 })
 
@@ -319,7 +329,7 @@ filterSelesai.addEventListener('click', () => {
     filterByStatus('selesai');
 });
 
-filterBlmselesai.addEventListener(`click`, ()=>{
+filterBlmselesai.addEventListener(`click`, () => {
     filterByStatus('belum selesai')
 })
 
@@ -383,7 +393,7 @@ popupClose.addEventListener('click', () => {
 popupSimpan.addEventListener('click', (event) => {
     event.preventDefault();
 
-    
+
     const simpan = {
         id: updateIndex,
         nama: popupNama.value,
@@ -392,7 +402,8 @@ popupSimpan.addEventListener('click', (event) => {
         dp: popupDp.value,
         tglpesan: popupTglpesan.value,
         tglambil: popupTglambil.value,
-        status: listArray.find(val => val.id === updateIndex)?.status || 'belum selesai'
+        // status: listArray.find(val => val.id === updateIndex)?.status || 'belum selesai'
+        status: listArray.find(val => val.id === updateIndex)?.status === 'selesai' ? 'belum selesai' : listArray.find(val => val.id === updateIndex)?.status
     };
 
     if (updateIndex != null) {
@@ -433,7 +444,7 @@ popupCancel.addEventListener('click', (event) => {
     popupTglpesan.value = '';
     popupTglambil.value = '';
 
-    
+
 
     updateIndex = null;
     popup.style.display = 'none';

@@ -28,22 +28,24 @@
             <div class="kotak">
                 <div class="keterangan">
                     <label for="">Nama</label>
-                    <input type="text" id="nama" placeholder="nama">
+                    <input type="text" id="nama" placeholder="nama" required>
                 </div>
                 <div class="keterangan">
                     <label for="">DP</label>
-                    <input type="number" id="dp" placeholder="dp">
+                    <span id="dpError" class="error-message"></span>
+                    <input type="number" id="dp" placeholder="dp" required>
                 </div>
             </div>
 
             <div class="kotak">
                 <div class="keterangan">
                     <label for="">No Hp</label>
-                    <input type="number" id="noHp" placeholder="noHp">
+                    <span id="noHpError" class="error-message"></span>
+                    <input type="number" id="noHp" placeholder="noHp" required>
                 </div>
                 <div class="keterangan">
                     <label for="">Tanggal Pesan</label>
-                    <input type="date" id="tglpesan" placeholder="Tanggal Pesan">
+                    <input type="date" id="tglpesan" placeholder="Tanggal Pesan" required>
                 </div>
             </div>
 
